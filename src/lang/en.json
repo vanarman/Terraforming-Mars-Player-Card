@@ -1,0 +1,112 @@
+{
+  "general": {
+    "button": {
+      "yes": "Yes",
+      "no": "No",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "close": "Close"
+    },
+    "error": {
+      "insufficientFunds": "You have insufficient founds to perform this action."
+    }
+  },
+  "action": {
+    "playCard": "Play Card from Hand",
+    "standardProject": "Use a Standard Project",
+    "claimMilestone": "Claim a Milestone",
+    "fundAward": "Fund an Award",
+    "blueCardAction": "Use Action on Blue Card",
+    "getGreenery": "Get Greenery Tile",
+    "increaseTemperature": "Increase Temperature"
+  },
+  "screen": {
+    "playCard": {
+      "rank": "Terraform Rating: {{rank}}",
+      "researchButton": "Research",
+      "actionButton": "Action",
+      "productionButton": "Production"
+    }
+  },
+  "resourceCard": {
+    "production": "Current Production"
+  },
+  "modal": {
+    "playCard": {
+      "title": "Play Card",
+      "costLabel": "Card cost: {{cost}}",
+      "productionLabel": "Production change:",
+      "resource": {
+        "CREDIT": "M€",
+        "STEEL": "Steel",
+        "TITANIUM": "Titanium",
+        "PLANTS": "Plants",
+        "ENERGY": "Energy",
+        "HEAT": "Heat"
+      }
+    },
+    "research": {
+      "title": "Select Number of Cards to Purchase"
+    },
+    "claimMilestone": {
+      "title": "Claim Milestone Verification",
+      "claimButton": "Claim",
+      "milestone": {
+        "terraformer": "Terraformer",
+        "mayor": "Mayor",
+        "gardener": "Gardener",
+        "builder": "Builder",
+        "planner": "Planner"
+      },
+      "requirementsCheck": {
+        "title": "Satisfying Requirements",
+        "message": {
+          "mayor": "Do you own at least 3 cities?",
+          "gardener": "Do you own at least 3 greenery tiles?",
+          "builder": "Do you have at least 8 building tags in play?",
+          "planner": "Do you have at least 16 cards in your hand?"
+        }
+      }
+    },
+    "fundAward": {
+      "title": "Select Number of Awards",
+      "text": "How many awards has been already claimed on the board?"
+    },
+    "standardProject": {
+      "title": "Perform Standard Project Action",
+      "actions": {
+        "patents": {
+          "title": "Sell patents",
+          "button": "Sell"
+        },
+        "powerPlant": {
+          "title": "Power plant",
+          "button": "Build"
+        },
+        "asteroid": {
+          "title": "Asteroid",
+          "button": "Smash"
+        },
+        "aquifer": {
+          "title": "Aquifer",
+          "button": "Splash"
+        },
+        "greenery": {
+          "title": "Greenery",
+          "button": "Plant"
+        },
+        "city": {
+          "title": "City",
+          "button": "Build"
+        }
+      },
+      "tilePlacement": {
+        "title": "Tile Placement Confirmation",
+        "asteroid": "Are you able to increase temperature?",
+        "aquifer": "Are you able to place a ocean tile on a board?",
+        "greenery": "Are you able to place a greenery tile on a board?",
+        "city": "Are you able to place a city tile on a board?"
+      }
+    }
+  }
+}

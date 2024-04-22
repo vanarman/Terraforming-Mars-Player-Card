@@ -1,0 +1,30 @@
+{
+  "general": {
+    "button": {
+      "yes": "Oui",
+      "no": "Non",
+      "cancel": "Annuler",
+      "confirm": "Confirmer"
+    },
+    "error": {
+      "insufficientFunds": "Vous n'avez pas assez de fonds pour effectuer cette action."
+    }
+  },
+  "action": {
+    "playCard": "Jouer une carte de la main",
+    "standardProject": "Utiliser un projet standard",
+    "claimMilestone": "Réclamer un jalon",
+    "fundAward": "Financer un prix",
+    "blueCardAction": "Utiliser une action sur la carte bleue",
+    "getGreenery": "Obtenir une tuile de verdure",
+    "increaseTemperature": "Augmenter la température"
+  },
+  "screen": {
+    "playCard": {
+      "rank": "Terraform Rating: {{rank}}",
+      "researchButton": "Recherche",
+      "actionButton": "Action",
+      "productionButton": "Production"
+    }
+  }
+}

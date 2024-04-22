@@ -1,0 +1,32 @@
+[
+  {
+    "type": "credit",
+    "iconName" : "BadgeEuro",
+    "min": -5
+  },
+  {
+    "type": "steel",
+    "iconName" : "Pickaxe",
+    "min": 0
+  },
+  {
+    "type": "titanium",
+    "iconName" : "Star",
+    "min": 0
+  },
+  {
+    "type": "plants",
+    "iconName" : "Leaf",
+    "min": 0
+  },
+  {
+    "type": "energy",
+    "iconName" : "Zap",
+    "min": 0
+  },
+  {
+    "type": "heat",
+    "iconName" : "Flame",
+    "min": 0
+  }
+]
