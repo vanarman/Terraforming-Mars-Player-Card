@@ -155,7 +155,7 @@ export const resourceSlice = createSlice({
         };
         state["ENERGY"] = {
           ...state["ENERGY"],
-          current: state["ENERGY"].current + 1,
+          production: state["ENERGY"].production + 1,
         };
         return;
       }
