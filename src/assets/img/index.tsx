@@ -21,9 +21,7 @@ const assets: any = {
 export async function loadResourcesAndDataAsync() {
   try {
     await SplashScreen.preventAutoHideAsync();
-
     const imageAssets = cacheImages(Object.values(assets.images));
-
     await Promise.all([...imageAssets]);
   } catch (e) {
     console.warn(e);
