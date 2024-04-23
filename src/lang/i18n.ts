@@ -12,14 +12,14 @@ const resources = {
 const expoLocale = getLocales();
 
 i18n.createInstance()
-  .use(initReactI18next) // passes i18n down to react-i18next
+  .use(initReactI18next)
   .init({
     load: 'languageOnly',
-    compatibilityJSON: 'v3', //To make it work for Android devices, add this line.
+    compatibilityJSON: 'v3',
     resources,
     // debug: true,
-    lng: expoLocale[0].languageCode === 'fr' ? 'fr' : 'en', // default language to use.
-    // if you're using a language detector, do not define the lng option
+    lng: expoLocale[0].languageCode === 'fr' ? 'fr' : 'en',
+    fallbackLng: "en",
     interpolation: {
       escapeValue: false,
     },
