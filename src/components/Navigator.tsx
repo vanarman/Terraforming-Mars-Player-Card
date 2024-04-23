@@ -4,15 +4,15 @@ import { PlayCardScreen, HomeScreen } from "@screens/index";
 const Stack = createNativeStackNavigator();
 
 const Navigator = () => {
-	return (
-		<Stack.Navigator
-			initialRouteName="PlayCardScreen"
-			screenOptions={{ headerShown: false }}
-		>
+  return (
+    <Stack.Navigator
+      initialRouteName="PlayCardScreen"
+      screenOptions={{ headerShown: false }}
+    >
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
-			<Stack.Screen name="PlayCardScreen" component={PlayCardScreen} />
-		</Stack.Navigator>
-	);
-}
+      <Stack.Screen name="PlayCardScreen" component={PlayCardScreen} />
+    </Stack.Navigator>
+  );
+};
 
 export default Navigator;

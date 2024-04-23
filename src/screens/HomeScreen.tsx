@@ -1,4 +1,4 @@
-import { Box, ButtonGroup, ButtonText, Button, HStack, Text, VStack, View } from "@gluestack-ui/themed";
+import { ButtonText, Button, View } from "@gluestack-ui/themed";
 
 const HomeScreen = () => {
   return (
@@ -8,6 +8,6 @@ const HomeScreen = () => {
       </Button>
     </View>
   );
-}
+};
 
 export default HomeScreen;

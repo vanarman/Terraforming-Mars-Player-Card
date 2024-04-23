@@ -1,7 +1,4 @@
+import HomeScreen from "./HomeScreen";
 import PlayCardScreen from "./PlayCardScreen";
-import HomeScreen from './HomeScreen';
 
-export {
-  PlayCardScreen,
-  HomeScreen
-}
+export { PlayCardScreen, HomeScreen };

@@ -6,6 +6,8 @@
       "@components/*": ["./src/components/*"],
       "@models/*": ["./src/models/*"],
       "@screens/*": ["./src/screens/*"],
+      "@styles/*": ["./src/assets/styles/*"],
+      "@images/*": ["./src/assets/img/*"],
     }
   },
 }

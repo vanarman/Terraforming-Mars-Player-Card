@@ -1,5 +1,5 @@
 export interface Resource {
-  current: number,
-  production: number,
-  min: number,
+  current: number;
+  production: number;
+  min: number;
 }
