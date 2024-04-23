@@ -25,11 +25,20 @@
       "rank": "Terraform Rating: {{rank}}",
       "researchButton": "Research",
       "actionButton": "Action",
-      "productionButton": "Production"
+      "productionButton": "Production",
+      "terraformRankModal": {
+        "title": "Manual Rank Adjustment",
+        "current": "Current: {{amount}}"
+      }
     }
   },
   "resourceCard": {
-    "production": "Current Production"
+    "production": "Current Production",
+    "modal": {
+      "title": "Manual Adjustment",
+      "current": "Current: {{amount}}",
+      "production": "Production: {{amount}}"
+    }
   },
   "modal": {
     "playCard": {
@@ -46,7 +55,7 @@
       }
     },
     "research": {
-      "title": "Select Number of Cards to Purchase"
+      "title": "Select Number of Cards to Purchase:"
     },
     "claimMilestone": {
       "title": "Claim Milestone Verification",

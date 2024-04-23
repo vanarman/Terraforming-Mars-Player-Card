@@ -4,7 +4,8 @@
       "yes": "Oui",
       "no": "Non",
       "cancel": "Annuler",
-      "confirm": "Confirmer"
+      "confirm": "Confirmer",
+      "close": "Fermer"
     },
     "error": {
       "insufficientFunds": "Vous n'avez pas assez de fonds pour effectuer cette action."
@@ -21,10 +22,100 @@
   },
   "screen": {
     "playCard": {
-      "rank": "Terraform Rating: {{rank}}",
+      "rank": "Notation Terraform: {{rank}}",
       "researchButton": "Recherche",
       "actionButton": "Action",
-      "productionButton": "Production"
+      "productionButton": "Production",
+      "terraformRankModal": {
+        "title": "Ajustement manuel du classement",
+        "current": "Courante: {{amount}}"
+      }
+    }
+  },
+  "resourceCard": {
+    "production": "La production courante",
+    "modal": {
+      "title": "Réglage manuel",
+      "current": "courante: {{amount}}",
+      "production": "Production: {{amount}}"
+    }
+  },
+  "modal": {
+    "playCard": {
+      "title": "Jouer aux cartes",
+      "costLabel": "Coût de la carte: {{cost}}",
+      "productionLabel": "Changement de production:",
+      "resource": {
+        "CREDIT": "M€",
+        "STEEL": "Acier",
+        "TITANIUM": "Titane",
+        "PLANTS": "Plantes",
+        "ENERGY": "Énergie",
+        "HEAT": "Chaleur"
+      }
+    },
+    "research": {
+      "title": "Sélectionnez le nombre de cartes à acheter:"
+    },
+    "claimMilestone": {
+      "title": "Vérification des jalons de réclamation",
+      "claimButton": "Réclamer",
+      "milestone": {
+        "terraformer": "Terraformeur",
+        "mayor": "Maire(sse)",
+        "gardener": "Jardinier(e)",
+        "builder": "Constructeur(rice)",
+        "planner": "Planificateur(rice)"
+      },
+      "requirementsCheck": {
+        "title": "Satisfaire les exigences",
+        "message": {
+          "mayor": "Possédez-vous au moins 3 villes?",
+          "gardener": "Possédez-vous au moins 3 tuiles de verdure?",
+          "builder": "Avez-vous au moins 8 balises de construction en jeu?",
+          "planner": "Avez-vous au moins 16 cartes en main?"
+        }
+      }
+    },
+    "fundAward": {
+      "title": "Sélectionnez le nombre de récompenses",
+      "text": "Combien de récompenses ont déjà été réclamées au tableau?"
+    },
+    "standardProject": {
+      "title": "Effectuer une action de projet standard",
+      "actions": {
+        "patents": {
+          "title": "Vendre des brevets",
+          "button": "Vendre"
+        },
+        "powerPlant": {
+          "title": "Centrale électrique",
+          "button": "Construire"
+        },
+        "asteroid": {
+          "title": "Astéroïde",
+          "button": "Fracasser"
+        },
+        "aquifer": {
+          "title": "Aquifère",
+          "button": "Éclaboussure"
+        },
+        "greenery": {
+          "title": "Verdure",
+          "button": "Planter"
+        },
+        "city": {
+          "title": "Ville",
+          "button": "Construire"
+        }
+      },
+      "tilePlacement": {
+        "title": "Confirmation du placement des carreaux",
+        "asteroid": "Pouvez-vous augmenter la température?",
+        "aquifer": "Pouvez-vous placer une tuile océan sur un plateau?",
+        "greenery": "Pouvez-vous placer une tuile de verdure sur un plateau?",
+        "city": "Pouvez-vous placer une tuile ville sur un plateau?"
+      }
     }
   }
 }

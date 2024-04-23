@@ -11,7 +11,7 @@ interface IconProps {
 
 const Icon = ({ 
   name, 
-  color = '#000000', 
+  color = '#fff', 
   size = 24,
   strokeWidth = 3,
 }: IconProps) => {

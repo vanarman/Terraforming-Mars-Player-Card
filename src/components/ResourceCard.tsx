@@ -41,12 +41,12 @@ const ResourceCard = ({
         <ModalBackdrop />
         <ModalContent>
           <ModalHeader>
-            <Heading>Manual Adjustment</Heading>
+            <Heading>{t('resourceCard.modal.title')}</Heading>
             <Icon name={iconName} color={iconColor} strokeWidth={1.5} size={36} />
           </ModalHeader>
           <ModalBody>
             <Box flexDirection="row" justifyContent="space-between" alignItems="center" my="$1.5">
-              <Text fontSize="$2xl">Current: {balance.current}</Text>
+              <Text fontSize="$2xl">{t('resourceCard.modal.current', { amount: balance.current })}</Text>
               <ButtonGroup>
                 <Button isDisabled={balance.current <= 0} size="lg" onPress={() => dispatch(adjustCurrentAmount({ resourceType: resType, amount: -1 }))}>
                   <Icon name="Minus" size={16} strokeWidth={3} />
@@ -57,7 +57,7 @@ const ResourceCard = ({
               </ButtonGroup>
             </Box>
             <Box flexDirection="row" justifyContent="space-between" alignItems="center" my="$1.5">
-              <Text fontSize="$2xl">Production: {balance.production}</Text>
+              <Text fontSize="$2xl">{t('resourceCard.modal.production', { amount: balance.production })}</Text>
               <ButtonGroup>
                 <Button isDisabled={balance.production <= balance.min} size="lg" onPress={() => dispatch(adjustProductionAmount({ resourceType: resType, amount: -1 }))}>
                   <Icon name="Minus" size={16} strokeWidth={3} />
@@ -70,7 +70,7 @@ const ResourceCard = ({
           </ModalBody>
           <ModalFooter>
             <Button action="positive" onPress={() => {setEditModalVisibility(false)}}>
-              <ButtonText>Close</ButtonText>
+              <ButtonText>{t('general.button.close')}</ButtonText>
             </Button>
           </ModalFooter>
         </ModalContent>

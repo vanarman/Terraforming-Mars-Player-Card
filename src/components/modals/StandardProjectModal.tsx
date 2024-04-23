@@ -76,10 +76,10 @@ const StandardProjectModal = () => {
             <Box justifyContent="space-between" alignItems="center" my="$2" px="$2" flexDirection="row">
               <Text>{t('modal.standardProject.actions.patents.title')}</Text>
               <Box flexDirection="row" w="$1/2">
-                <Input w="$1/2">
+                <Input w="$1/3">
                   <InputField value={patentsAmount.toString()} onChangeText={(value) => setPatentsAmount(+value)} keyboardType='number-pad' />
                 </Input>
-                <Button w="$1/2" isDisabled={credits.current < 11} onPress={() => {
+                <Button w="$2/3" isDisabled={credits.current < 11} onPress={() => {
                   dispatch(standardProject({ type: StandardProjectType.SELL_PATENT, amount: patentsAmount }));
                   dispatch(hide({ modalType: "standardProjectModalVisibility" }));
                 }}>

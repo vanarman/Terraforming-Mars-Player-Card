@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { standardProject } from "./resourceSlice";
-import { StandardProjectType } from "@models/StandardProjectType";
 
 const initialRank: Record<string, boolean> = {
   "researchModalStateVisibility": false,
