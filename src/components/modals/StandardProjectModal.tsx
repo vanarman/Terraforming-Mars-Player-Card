@@ -42,6 +42,23 @@ const StandardProjectModal = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
+  const imageSrc = () => {
+    if (selectedAction === StandardProjectType.ASTEROID) {
+      return require("@images/tilePlacement/asteroid.gif");
+    }
+    if (selectedAction === StandardProjectType.AQUIFER) {
+      return require("@images/tilePlacement/aquifer.gif");
+    }
+    if (selectedAction === StandardProjectType.GREENERY) {
+      return require("@images/tilePlacement/greenery.gif");
+    }
+    if (selectedAction === StandardProjectType.CITY) {
+      return require("@images/tilePlacement/city.gif");
+    }
+
+    return undefined;
+  };
+
   return (
     <>
       <Modal
@@ -228,9 +245,7 @@ const StandardProjectModal = () => {
               size="xl"
               m="$3"
               alignSelf="center"
-              source={require(
-                `@images/tilePlacement/${selectedAction?.toString()}`,
-              )}
+              source={imageSrc()}
               alt={`Placement of ${selectedAction?.toString()} tile`}
             />
           </AlertDialogBody>
