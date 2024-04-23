@@ -1,5 +1,4 @@
 import { Box, ButtonGroup, ButtonText, Button, HStack, Text, VStack, View } from "@gluestack-ui/themed";
-import * as defaults from '../data/config.json'
 
 const HomeScreen = () => {
   return (
