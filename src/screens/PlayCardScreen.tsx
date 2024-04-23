@@ -54,11 +54,11 @@ const PlayCardScreen = () => {
         <ModalBackdrop />
         <ModalContent>
           <ModalHeader>
-            <Heading>Manual Adjustment</Heading>
+            <Heading>{t('screen.playCard.terraformRankModal.title')}</Heading>
           </ModalHeader>
           <ModalBody>
             <Box flexDirection="row" justifyContent="space-between" alignItems="center" my="$1.5">
-              <Text fontSize="$2xl">Current: {rank}</Text>
+              <Text fontSize="$2xl">{t('screen.playCard.terraformRankModal.current', { amount: rank })}</Text>
               <ButtonGroup>
                 <Button isDisabled={rank <= 0} size="lg" onPress={() => dispatch(adjustRank({ value: -1 }))}>
                   <Icon name="Minus" size={16} strokeWidth={3} />
@@ -71,7 +71,7 @@ const PlayCardScreen = () => {
           </ModalBody>
           <ModalFooter>
             <Button action="positive" onPress={() => {setRankAdjustmentVisibility(false)}}>
-              <ButtonText>Close</ButtonText>
+              <ButtonText>{t('general.button.close')}</ButtonText>
             </Button>
           </ModalFooter>
         </ModalContent>
