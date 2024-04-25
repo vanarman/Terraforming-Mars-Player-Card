@@ -1,12 +1,7 @@
+import ModalWrapper from "@components/ModalWrapper";
 import {
   Box,
-  Modal,
-  ModalBackdrop,
-  ModalContent,
-  ModalHeader,
   Heading,
-  ModalCloseButton,
-  ModalBody,
   Text,
   Button,
   ButtonText,
@@ -26,8 +21,6 @@ import { hide } from "src/redux/modalSlice";
 import { claimMilestone } from "src/redux/resourceSlice";
 import { RootState } from "src/redux/store";
 
-import Icon from "../Icon";
-
 const MilestoneModal = () => {
   const [selectedAction, setSelectedAction] = useState<Milestone | null>(null);
   const modalVisibility = useSelector(
@@ -39,117 +32,101 @@ const MilestoneModal = () => {
 
   return (
     <>
-      <Modal
-        size="lg"
-        closeOnOverlayClick
+      <ModalWrapper
+        title={t("modal.claimMilestone.title")}
         isOpen={modalVisibility}
         onClose={() =>
           dispatch(hide({ modalType: "milestoneModalVisibility" }))
         }
       >
-        <ModalBackdrop />
-        <ModalContent>
-          <ModalHeader>
-            <Heading size="md">{t("modal.claimMilestone.title")}</Heading>
-            <ModalCloseButton
-              onPress={() =>
-                dispatch(hide({ modalType: "milestoneModalVisibility" }))
-              }
-            >
-              <Icon name="SquareX" />
-            </ModalCloseButton>
-          </ModalHeader>
-          <ModalBody scrollEnabled={false}>
-            <Box
-              justifyContent="space-between"
-              alignItems="center"
-              my="$2"
-              px="$2"
-              flexDirection="row"
-            >
-              <Text>{t("modal.claimMilestone.milestone.terraformer")}</Text>
-              <Button
-                w="$1/2"
-                isDisabled={rank < 35}
-                onPress={() => {
-                  dispatch(claimMilestone());
-                  dispatch(hide({ modalType: "milestoneModalVisibility" }));
-                }}
-              >
-                <ButtonText>{t("modal.claimMilestone.claimButton")}</ButtonText>
-              </Button>
-            </Box>
-            <Box
-              justifyContent="space-between"
-              alignItems="center"
-              my="$2"
-              px="$2"
-              flexDirection="row"
-            >
-              <Text>{t("modal.claimMilestone.milestone.mayor")}</Text>
-              <Button
-                w="$1/2"
-                onPress={() => {
-                  setSelectedAction(Milestone.MAYOR);
-                }}
-              >
-                <ButtonText>{t("modal.claimMilestone.claimButton")}</ButtonText>
-              </Button>
-            </Box>
-            <Box
-              justifyContent="space-between"
-              alignItems="center"
-              my="$2"
-              px="$2"
-              flexDirection="row"
-            >
-              <Text>{t("modal.claimMilestone.milestone.gardener")}</Text>
-              <Button
-                w="$1/2"
-                onPress={() => {
-                  setSelectedAction(Milestone.GARDENER);
-                }}
-              >
-                <ButtonText>{t("modal.claimMilestone.claimButton")}</ButtonText>
-              </Button>
-            </Box>
-            <Box
-              justifyContent="space-between"
-              alignItems="center"
-              my="$2"
-              px="$2"
-              flexDirection="row"
-            >
-              <Text>{t("modal.claimMilestone.milestone.builder")}</Text>
-              <Button
-                w="$1/2"
-                onPress={() => {
-                  setSelectedAction(Milestone.BUILDER);
-                }}
-              >
-                <ButtonText>{t("modal.claimMilestone.claimButton")}</ButtonText>
-              </Button>
-            </Box>
-            <Box
-              justifyContent="space-between"
-              alignItems="center"
-              my="$2"
-              px="$2"
-              flexDirection="row"
-            >
-              <Text>{t("modal.claimMilestone.milestone.planner")}</Text>
-              <Button
-                w="$1/2"
-                onPress={() => {
-                  setSelectedAction(Milestone.PLANNER);
-                }}
-              >
-                <ButtonText>{t("modal.claimMilestone.claimButton")}</ButtonText>
-              </Button>
-            </Box>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+        <Box
+          justifyContent="space-between"
+          alignItems="center"
+          my="$2"
+          px="$2"
+          flexDirection="row"
+        >
+          <Text>{t("modal.claimMilestone.milestone.terraformer")}</Text>
+          <Button
+            w="$1/2"
+            isDisabled={rank < 35}
+            onPress={() => {
+              dispatch(claimMilestone());
+              dispatch(hide({ modalType: "milestoneModalVisibility" }));
+            }}
+          >
+            <ButtonText>{t("modal.claimMilestone.claimButton")}</ButtonText>
+          </Button>
+        </Box>
+        <Box
+          justifyContent="space-between"
+          alignItems="center"
+          my="$2"
+          px="$2"
+          flexDirection="row"
+        >
+          <Text>{t("modal.claimMilestone.milestone.mayor")}</Text>
+          <Button
+            w="$1/2"
+            onPress={() => {
+              setSelectedAction(Milestone.MAYOR);
+            }}
+          >
+            <ButtonText>{t("modal.claimMilestone.claimButton")}</ButtonText>
+          </Button>
+        </Box>
+        <Box
+          justifyContent="space-between"
+          alignItems="center"
+          my="$2"
+          px="$2"
+          flexDirection="row"
+        >
+          <Text>{t("modal.claimMilestone.milestone.gardener")}</Text>
+          <Button
+            w="$1/2"
+            onPress={() => {
+              setSelectedAction(Milestone.GARDENER);
+            }}
+          >
+            <ButtonText>{t("modal.claimMilestone.claimButton")}</ButtonText>
+          </Button>
+        </Box>
+        <Box
+          justifyContent="space-between"
+          alignItems="center"
+          my="$2"
+          px="$2"
+          flexDirection="row"
+        >
+          <Text>{t("modal.claimMilestone.milestone.builder")}</Text>
+          <Button
+            w="$1/2"
+            onPress={() => {
+              setSelectedAction(Milestone.BUILDER);
+            }}
+          >
+            <ButtonText>{t("modal.claimMilestone.claimButton")}</ButtonText>
+          </Button>
+        </Box>
+        <Box
+          justifyContent="space-between"
+          alignItems="center"
+          my="$2"
+          px="$2"
+          flexDirection="row"
+        >
+          <Text>{t("modal.claimMilestone.milestone.planner")}</Text>
+          <Button
+            w="$1/2"
+            onPress={() => {
+              setSelectedAction(Milestone.PLANNER);
+            }}
+          >
+            <ButtonText>{t("modal.claimMilestone.claimButton")}</ButtonText>
+          </Button>
+        </Box>
+      </ModalWrapper>
       <AlertDialog isOpen={selectedAction != null}>
         <AlertDialogBackdrop />
         <AlertDialogContent>

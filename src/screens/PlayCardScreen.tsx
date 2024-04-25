@@ -1,4 +1,5 @@
 import Icon from "@components/Icon";
+import ModalWrapper from "@components/ModalWrapper";
 import ResourceCard from "@components/ResourceCard";
 import ModalPresentationWrapper from "@components/modals/ModalPresentationWrapper";
 import {
@@ -10,18 +11,11 @@ import {
   Text,
   VStack,
   Pressable,
-  Modal,
-  ModalBackdrop,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Heading,
-  ImageBackground,
 } from "@gluestack-ui/themed";
 import { ResourceType } from "@models/ResourceType";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { ScreenBackground } from "@styles/global";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -40,7 +34,7 @@ const PlayCardScreen = () => {
   const insets = useSafeAreaInsets();
 
   return (
-    <ImageBackground
+    <ScreenBackground
       source={require("@images/background/playerCard.jpg")}
       resizeMode="cover"
       style={{ flex: 1, justifyContent: "center" }}
@@ -144,59 +138,42 @@ const PlayCardScreen = () => {
         </HStack>
       </VStack>
       <ModalPresentationWrapper />
-      <Modal
+      <ModalWrapper
+        title={t("screen.playCard.terraformRankModal.title")}
         isOpen={rankAdjustmentVisibility}
         onClose={() => setRankAdjustmentVisibility(false)}
       >
-        <ModalBackdrop />
-        <ModalContent>
-          <ModalHeader>
-            <Heading>{t("screen.playCard.terraformRankModal.title")}</Heading>
-          </ModalHeader>
-          <ModalBody>
-            <Box
-              flexDirection="row"
-              justifyContent="space-between"
-              alignItems="center"
-              my="$1.5"
-            >
-              <Text fontSize="$2xl">
-                {t("screen.playCard.terraformRankModal.current", {
-                  amount: rank,
-                })}
-              </Text>
-              <ButtonGroup>
-                <Button
-                  isDisabled={rank <= 0}
-                  size="lg"
-                  onPress={() => dispatch(adjustRank({ value: -1 }))}
-                >
-                  <Icon name="Minus" size={16} strokeWidth={3} />
-                </Button>
-                <Button
-                  size="lg"
-                  onPress={() => {
-                    dispatch(adjustRank({ value: 1 }));
-                  }}
-                >
-                  <Icon name="Plus" size={16} strokeWidth={3} />
-                </Button>
-              </ButtonGroup>
-            </Box>
-          </ModalBody>
-          <ModalFooter>
+        <Box
+          flexDirection="row"
+          justifyContent="space-between"
+          alignItems="center"
+          my="$1.5"
+        >
+          <Text fontSize="$2xl">
+            {t("screen.playCard.terraformRankModal.current", {
+              amount: rank,
+            })}
+          </Text>
+          <ButtonGroup>
             <Button
-              action="positive"
+              isDisabled={rank <= 0}
+              size="lg"
+              onPress={() => dispatch(adjustRank({ value: -1 }))}
+            >
+              <Icon name="Minus" size={16} strokeWidth={3} />
+            </Button>
+            <Button
+              size="lg"
               onPress={() => {
-                setRankAdjustmentVisibility(false);
+                dispatch(adjustRank({ value: 1 }));
               }}
             >
-              <ButtonText>{t("general.button.close")}</ButtonText>
+              <Icon name="Plus" size={16} strokeWidth={3} />
             </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-    </ImageBackground>
+          </ButtonGroup>
+        </Box>
+      </ModalWrapper>
+    </ScreenBackground>
   );
 };
 

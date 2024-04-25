@@ -1,41 +1,28 @@
-import {
-  Button,
-  ButtonGroup,
-  ButtonText,
-  View,
-  ImageBackground,
-} from "@gluestack-ui/themed";
+import { Button, ButtonGroup, ButtonText, View } from "@gluestack-ui/themed";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { ScreenBackground } from "@styles/global";
 
 const HomeScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   return (
-    <ImageBackground
-      source={require("@images/background/homeScreen.png")}
-      resizeMode="cover"
-      style={{ flex: 1, justifyContent: "center" }}
-    >
+    <ScreenBackground source={require("@images/background/homeScreen.png")}>
       <View flex={1} alignItems="center" justifyContent="center">
         <ButtonGroup flexDirection="column">
           <Button
-            bgColor="$backgroundDarkError"
             onPress={() => {
               navigation.navigate("PlayCardScreen");
             }}
           >
             <ButtonText>Start Game</ButtonText>
           </Button>
-          <Button
-            bgColor="$backgroundDarkError"
-            onPress={() => navigation.navigate("CreditsScreen")}
-          >
+          <Button onPress={() => navigation.navigate("CreditsScreen")}>
             <ButtonText>Credits</ButtonText>
           </Button>
         </ButtonGroup>
       </View>
-    </ImageBackground>
+    </ScreenBackground>
   );
 };
 

@@ -1,12 +1,7 @@
+import ModalWrapper from "@components/ModalWrapper";
 import {
   Box,
-  Modal,
-  ModalBackdrop,
-  ModalContent,
-  ModalHeader,
   Heading,
-  ModalCloseButton,
-  ModalBody,
   Text,
   Button,
   ButtonText,
@@ -28,8 +23,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { hide } from "src/redux/modalSlice";
 import { standardProject } from "src/redux/resourceSlice";
 import { RootState } from "src/redux/store";
-
-import Icon from "../Icon";
 
 const StandardProjectModal = () => {
   const [selectedAction, setSelectedAction] =
@@ -59,138 +52,121 @@ const StandardProjectModal = () => {
     return undefined;
   };
 
+  const cancelAction = () => {
+    dispatch(hide({ modalType: "standardProjectModalVisibility" }));
+  };
+
   return (
     <>
-      <Modal
-        size="lg"
-        closeOnOverlayClick
+      <ModalWrapper
+        title={t("modal.standardProject.title")}
         isOpen={modalVisibility}
-        onClose={() =>
-          dispatch(hide({ modalType: "standardProjectModalVisibility" }))
-        }
+        onClose={cancelAction}
+        noFooter
       >
-        <ModalBackdrop />
-        <ModalContent>
-          <ModalHeader>
-            <Heading size="md">{t("modal.standardProject.title")}</Heading>
-            <ModalCloseButton
-              onPress={() =>
-                dispatch(hide({ modalType: "standardProjectModalVisibility" }))
-              }
+        <BodyRowContainer>
+          <Text>{t("modal.standardProject.actions.patents.title")}</Text>
+          <Box flexDirection="row" w="$1/2">
+            <Input w="$1/3">
+              <InputField
+                value={patentsAmount.toString()}
+                onChangeText={(value) => setPatentsAmount(+value)}
+                keyboardType="number-pad"
+              />
+            </Input>
+            <Button
+              w="$2/3"
+              isDisabled={credits.current < 11}
+              onPress={() => {
+                dispatch(
+                  standardProject({
+                    type: StandardProjectType.SELL_PATENT,
+                    amount: patentsAmount,
+                  }),
+                );
+                cancelAction();
+              }}
             >
-              <Icon name="SquareX" />
-            </ModalCloseButton>
-          </ModalHeader>
-          <ModalBody scrollEnabled={false}>
-            <BodyRowContainer>
-              <Text>{t("modal.standardProject.actions.patents.title")}</Text>
-              <Box flexDirection="row" w="$1/2">
-                <Input w="$1/3">
-                  <InputField
-                    value={patentsAmount.toString()}
-                    onChangeText={(value) => setPatentsAmount(+value)}
-                    keyboardType="number-pad"
-                  />
-                </Input>
-                <Button
-                  w="$2/3"
-                  isDisabled={credits.current < 11}
-                  onPress={() => {
-                    dispatch(
-                      standardProject({
-                        type: StandardProjectType.SELL_PATENT,
-                        amount: patentsAmount,
-                      }),
-                    );
-                    dispatch(
-                      hide({ modalType: "standardProjectModalVisibility" }),
-                    );
-                  }}
-                >
-                  <ButtonText>
-                    {t("modal.standardProject.actions.patents.button")}
-                  </ButtonText>
-                </Button>
-              </Box>
-            </BodyRowContainer>
-            <BodyRowContainer>
-              <Text>{t("modal.standardProject.actions.powerPlant.title")}</Text>
-              <Button
-                w="$1/2"
-                isDisabled={credits.current < 11}
-                onPress={() => {
-                  dispatch(
-                    standardProject({ type: StandardProjectType.POWER_PLANT }),
-                  );
-                  dispatch(
-                    hide({ modalType: "standardProjectModalVisibility" }),
-                  );
-                }}
-              >
-                <ButtonText>
-                  {t("modal.standardProject.actions.powerPlant.button")}
-                </ButtonText>
-              </Button>
-            </BodyRowContainer>
-            <BodyRowContainer>
-              <Text>{t("modal.standardProject.actions.asteroid.title")}</Text>
-              <Button
-                w="$1/2"
-                isDisabled={credits.current < 14}
-                onPress={() => {
-                  setSelectedAction(StandardProjectType.ASTEROID);
-                }}
-              >
-                <ButtonText>
-                  {t("modal.standardProject.actions.asteroid.button")}
-                </ButtonText>
-              </Button>
-            </BodyRowContainer>
-            <BodyRowContainer>
-              <Text>{t("modal.standardProject.actions.aquifer.title")}</Text>
-              <Button
-                w="$1/2"
-                isDisabled={credits.current < 18}
-                onPress={() => {
-                  setSelectedAction(StandardProjectType.AQUIFER);
-                }}
-              >
-                <ButtonText>
-                  {t("modal.standardProject.actions.aquifer.button")}
-                </ButtonText>
-              </Button>
-            </BodyRowContainer>
-            <BodyRowContainer>
-              <Text>{t("modal.standardProject.actions.greenery.title")}</Text>
-              <Button
-                w="$1/2"
-                isDisabled={credits.current < 23}
-                onPress={() => {
-                  setSelectedAction(StandardProjectType.GREENERY);
-                }}
-              >
-                <ButtonText>
-                  {t("modal.standardProject.actions.greenery.button")}
-                </ButtonText>
-              </Button>
-            </BodyRowContainer>
-            <BodyRowContainer>
-              <Text>{t("modal.standardProject.actions.city.title")}</Text>
-              <Button
-                w="$1/2"
-                isDisabled={credits.current < 25}
-                onPress={() => {
-                  setSelectedAction(StandardProjectType.CITY);
-                }}
-              >
-                <ButtonText>
-                  {t("modal.standardProject.actions.city.button")}
-                </ButtonText>
-              </Button>
-            </BodyRowContainer>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+              <ButtonText>
+                {t("modal.standardProject.actions.patents.button")}
+              </ButtonText>
+            </Button>
+          </Box>
+        </BodyRowContainer>
+        <BodyRowContainer>
+          <Text>{t("modal.standardProject.actions.powerPlant.title")}</Text>
+          <Button
+            w="$1/2"
+            isDisabled={credits.current < 11}
+            onPress={() => {
+              dispatch(
+                standardProject({ type: StandardProjectType.POWER_PLANT }),
+              );
+              cancelAction();
+            }}
+          >
+            <ButtonText>
+              {t("modal.standardProject.actions.powerPlant.button")}
+            </ButtonText>
+          </Button>
+        </BodyRowContainer>
+        <BodyRowContainer>
+          <Text>{t("modal.standardProject.actions.asteroid.title")}</Text>
+          <Button
+            w="$1/2"
+            isDisabled={credits.current < 14}
+            onPress={() => {
+              setSelectedAction(StandardProjectType.ASTEROID);
+            }}
+          >
+            <ButtonText>
+              {t("modal.standardProject.actions.asteroid.button")}
+            </ButtonText>
+          </Button>
+        </BodyRowContainer>
+        <BodyRowContainer>
+          <Text>{t("modal.standardProject.actions.aquifer.title")}</Text>
+          <Button
+            w="$1/2"
+            isDisabled={credits.current < 18}
+            onPress={() => {
+              setSelectedAction(StandardProjectType.AQUIFER);
+            }}
+          >
+            <ButtonText>
+              {t("modal.standardProject.actions.aquifer.button")}
+            </ButtonText>
+          </Button>
+        </BodyRowContainer>
+        <BodyRowContainer>
+          <Text>{t("modal.standardProject.actions.greenery.title")}</Text>
+          <Button
+            w="$1/2"
+            isDisabled={credits.current < 23}
+            onPress={() => {
+              setSelectedAction(StandardProjectType.GREENERY);
+            }}
+          >
+            <ButtonText>
+              {t("modal.standardProject.actions.greenery.button")}
+            </ButtonText>
+          </Button>
+        </BodyRowContainer>
+        <BodyRowContainer>
+          <Text>{t("modal.standardProject.actions.city.title")}</Text>
+          <Button
+            w="$1/2"
+            isDisabled={credits.current < 25}
+            onPress={() => {
+              setSelectedAction(StandardProjectType.CITY);
+            }}
+          >
+            <ButtonText>
+              {t("modal.standardProject.actions.city.button")}
+            </ButtonText>
+          </Button>
+        </BodyRowContainer>
+      </ModalWrapper>
       <AlertDialog isOpen={selectedAction != null}>
         <AlertDialogBackdrop />
         <AlertDialogContent>
@@ -219,9 +195,7 @@ const StandardProjectModal = () => {
                 onPress={() => {
                   dispatch(standardProject({ type: selectedAction }));
                   setSelectedAction(null);
-                  dispatch(
-                    hide({ modalType: "standardProjectModalVisibility" }),
-                  );
+                  cancelAction();
                 }}
               >
                 <ButtonText>{t("general.button.yes")}</ButtonText>
@@ -231,9 +205,7 @@ const StandardProjectModal = () => {
                 action="negative"
                 onPress={() => {
                   setSelectedAction(null);
-                  dispatch(
-                    hide({ modalType: "standardProjectModalVisibility" }),
-                  );
+                  cancelAction();
                 }}
               >
                 <ButtonText>{t("general.button.no")}</ButtonText>

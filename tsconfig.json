@@ -8,6 +8,7 @@
       "@screens/*": ["./src/screens/*"],
       "@styles/*": ["./src/assets/styles/*"],
       "@images/*": ["./src/assets/img/*"],
+      "@configs/*": ["./src/config/*"],
     }
   },
 }

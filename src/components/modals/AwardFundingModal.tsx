@@ -43,7 +43,12 @@ const AwardFundingModal = () => {
               variant="outline"
               action="primary"
               onPress={() => {
-                dispatch(fundAward({ amount: 8 }));
+                dispatch(
+                  fundAward({
+                    amount: 8,
+                    resourceType: "CREDIT",
+                  }),
+                );
                 dispatch(hide({ modalType: "awardFundingModalVisibility" }));
               }}
             >
@@ -53,7 +58,7 @@ const AwardFundingModal = () => {
               variant="outline"
               action="primary"
               onPress={() => {
-                dispatch(fundAward({ amount: 14 }));
+                dispatch(fundAward({ amount: 14, resourceType: "CREDIT" }));
                 dispatch(hide({ modalType: "awardFundingModalVisibility" }));
               }}
             >
@@ -63,7 +68,7 @@ const AwardFundingModal = () => {
               variant="outline"
               action="primary"
               onPress={() => {
-                dispatch(fundAward({ amount: 20 }));
+                dispatch(fundAward({ amount: 20, resourceType: "CREDIT" }));
                 dispatch(hide({ modalType: "awardFundingModalVisibility" }));
               }}
             >

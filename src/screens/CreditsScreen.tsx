@@ -1,23 +1,15 @@
 import { A } from "@expo/html-elements";
-import {
-  Button,
-  ButtonText,
-  Heading,
-  ImageBackground,
-  Text,
-  View,
-} from "@gluestack-ui/themed";
+import { Button, ButtonText, Heading, Text, View } from "@gluestack-ui/themed";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { ScreenBackground } from "@styles/global";
 
 const CreditsScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   return (
-    <ImageBackground
+    <ScreenBackground
       source={require("@images/background/loadingBackground.png")}
-      resizeMode="cover"
-      style={{ flex: 1, justifyContent: "center" }}
     >
       <View alignItems="center" justifyContent="center" pt="$32" flexGrow={1}>
         <Heading color="$secondary50">Game Credits:</Heading>
@@ -88,7 +80,7 @@ const CreditsScreen = () => {
           <ButtonText>Back</ButtonText>
         </Button>
       </View>
-    </ImageBackground>
+    </ScreenBackground>
   );
 };
 

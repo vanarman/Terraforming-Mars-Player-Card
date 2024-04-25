@@ -1,4 +1,4 @@
-import { config } from "@gluestack-ui/config";
+import { config } from "@configs/gluestack-style.config";
 import { GluestackUIProvider } from "@gluestack-ui/themed";
 import { loadResourcesAndDataAsync } from "@images/index";
 import { NavigationContainer } from "@react-navigation/native";
