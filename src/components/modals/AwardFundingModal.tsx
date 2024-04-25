@@ -1,5 +1,3 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useTranslation } from "react-i18next";
 import {
   Heading,
   Text,
@@ -13,25 +11,33 @@ import {
   AlertDialogBody,
   AlertDialogFooter,
 } from "@gluestack-ui/themed";
-
-import { RootState } from "src/redux/store";
+import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
 import { hide } from "src/redux/modalSlice";
 import { fundAward } from "src/redux/resourceSlice";
+import { RootState } from "src/redux/store";
 
 const AwardFundingModal = () => {
-  const modalVisibility = useSelector((state: RootState) => state.modal["awardFundingModalVisibility"]);
+  const modalVisibility = useSelector(
+    (state: RootState) => state.modal["awardFundingModalVisibility"],
+  );
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
   return (
-    <AlertDialog isOpen={modalVisibility} onClose={() => {dispatch(hide({ modalType: "awardFundingModalVisibility" }))}}>
+    <AlertDialog
+      isOpen={modalVisibility}
+      onClose={() => {
+        dispatch(hide({ modalType: "awardFundingModalVisibility" }));
+      }}
+    >
       <AlertDialogBackdrop />
       <AlertDialogContent>
         <AlertDialogHeader>
-          <Heading size="lg">{t('modal.fundAward.title')}</Heading>
+          <Heading size="lg">{t("modal.fundAward.title")}</Heading>
         </AlertDialogHeader>
         <AlertDialogBody>
-          <Text size="lg">{t('modal.fundAward.text')}</Text>
+          <Text size="lg">{t("modal.fundAward.text")}</Text>
           <ButtonGroup space="lg" justifyContent="center" m="$3">
             <Button
               variant="outline"
@@ -73,12 +79,12 @@ const AwardFundingModal = () => {
               dispatch(hide({ modalType: "awardFundingModalVisibility" }));
             }}
           >
-            <ButtonText>{t('general.button.cancel')}</ButtonText>
+            <ButtonText>{t("general.button.cancel")}</ButtonText>
           </Button>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
   );
-}
+};
 
 export default AwardFundingModal;

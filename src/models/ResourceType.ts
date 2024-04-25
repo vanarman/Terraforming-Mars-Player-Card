@@ -4,5 +4,5 @@ export enum ResourceType {
   TITANIUM = "titanium",
   PLANTS = "plants",
   ENERGY = "energy",
-  HEAT = "heat"
+  HEAT = "heat",
 }
