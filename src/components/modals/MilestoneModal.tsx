@@ -38,6 +38,7 @@ const MilestoneModal = () => {
         onClose={() =>
           dispatch(hide({ modalType: "milestoneModalVisibility" }))
         }
+        noFooter
       >
         <Box
           justifyContent="space-between"

@@ -13,7 +13,7 @@ import { hide, show } from "src/redux/modalSlice";
 import { getGreenery, increaseTemperature } from "src/redux/resourceSlice";
 import { RootState } from "src/redux/store";
 
-const ActionPhaseModal = () => {
+const ActionPhaseDrawer = () => {
   const resources = useSelector((state: RootState) => state.resources);
   const modal = useSelector((state: RootState) => state.modal);
   const dispatch = useDispatch();
@@ -102,4 +102,4 @@ const ActionPhaseModal = () => {
   );
 };
 
-export default ActionPhaseModal;
+export default ActionPhaseDrawer;

@@ -1,16 +1,5 @@
-import {
-  Heading,
-  Text,
-  Button,
-  ButtonText,
-  ButtonGroup,
-  AlertDialog,
-  AlertDialogBackdrop,
-  AlertDialogHeader,
-  AlertDialogContent,
-  AlertDialogBody,
-  AlertDialogFooter,
-} from "@gluestack-ui/themed";
+import ModalWrapper from "@components/ModalWrapper";
+import { Text, Button, ButtonText, ButtonGroup } from "@gluestack-ui/themed";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { hide } from "src/redux/modalSlice";
@@ -24,71 +13,55 @@ const AwardFundingModal = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
+  const cancelAction = () => {
+    dispatch(hide({ modalType: "awardFundingModalVisibility" }));
+  };
+
   return (
-    <AlertDialog
+    <ModalWrapper
+      title={t("modal.research.title")}
       isOpen={modalVisibility}
-      onClose={() => {
-        dispatch(hide({ modalType: "awardFundingModalVisibility" }));
-      }}
+      onClose={cancelAction}
     >
-      <AlertDialogBackdrop />
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <Heading size="lg">{t("modal.fundAward.title")}</Heading>
-        </AlertDialogHeader>
-        <AlertDialogBody>
-          <Text size="lg">{t("modal.fundAward.text")}</Text>
-          <ButtonGroup space="lg" justifyContent="center" m="$3">
-            <Button
-              variant="outline"
-              action="primary"
-              onPress={() => {
-                dispatch(
-                  fundAward({
-                    amount: 8,
-                    resourceType: "CREDIT",
-                  }),
-                );
-                dispatch(hide({ modalType: "awardFundingModalVisibility" }));
-              }}
-            >
-              <ButtonText>0</ButtonText>
-            </Button>
-            <Button
-              variant="outline"
-              action="primary"
-              onPress={() => {
-                dispatch(fundAward({ amount: 14, resourceType: "CREDIT" }));
-                dispatch(hide({ modalType: "awardFundingModalVisibility" }));
-              }}
-            >
-              <ButtonText>1</ButtonText>
-            </Button>
-            <Button
-              variant="outline"
-              action="primary"
-              onPress={() => {
-                dispatch(fundAward({ amount: 20, resourceType: "CREDIT" }));
-                dispatch(hide({ modalType: "awardFundingModalVisibility" }));
-              }}
-            >
-              <ButtonText>2</ButtonText>
-            </Button>
-          </ButtonGroup>
-        </AlertDialogBody>
-        <AlertDialogFooter>
-          <Button
-            bg="$error600"
-            action="negative"
-            onPress={() => {
-              dispatch(hide({ modalType: "awardFundingModalVisibility" }));
-            }}
-          >
-            <ButtonText>{t("general.button.cancel")}</ButtonText>
-          </Button>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
+      <Text size="lg">{t("modal.fundAward.text")}</Text>
+      <ButtonGroup space="lg" justifyContent="center" m="$3">
+        <Button
+          variant="outline"
+          action="primary"
+          onPress={() => {
+            dispatch(
+              fundAward({
+                amount: 8,
+                resourceType: "CREDIT",
+              }),
+            );
+            dispatch(hide({ modalType: "awardFundingModalVisibility" }));
+          }}
+        >
+          <ButtonText>0</ButtonText>
+        </Button>
+        <Button
+          variant="outline"
+          action="primary"
+          onPress={() => {
+            dispatch(fundAward({ amount: 14, resourceType: "CREDIT" }));
+            dispatch(hide({ modalType: "awardFundingModalVisibility" }));
+          }}
+        >
+          <ButtonText>1</ButtonText>
+        </Button>
+        <Button
+          variant="outline"
+          action="primary"
+          onPress={() => {
+            dispatch(fundAward({ amount: 20, resourceType: "CREDIT" }));
+            dispatch(hide({ modalType: "awardFundingModalVisibility" }));
+          }}
+        >
+          <ButtonText>2</ButtonText>
+        </Button>
+      </ButtonGroup>
+    </ModalWrapper>
   );
 };
 
