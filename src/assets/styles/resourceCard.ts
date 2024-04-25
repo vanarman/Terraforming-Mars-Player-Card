@@ -14,7 +14,8 @@ const CardContainer = styled(Pressable, {
 const ResourceContainer = styled(HStack, {
   alignItems: "center",
   justifyContent: "center",
-  flexGrow: 1,
+  my: "$1/6",
+  p: "$3",
 });
 
 const ResourceText = styled(Text, {

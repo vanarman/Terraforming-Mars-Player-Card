@@ -39,7 +39,7 @@ interface ResourceCardProps {
 
 const ResourceCard = ({
   type,
-  bgColor,
+  bgColor = "rgba(255, 255, 255, 0.65)",
   iconName,
   iconColor = "#000",
 }: ResourceCardProps) => {
@@ -51,15 +51,30 @@ const ResourceCard = ({
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
+  const luminance = (color: string) => {
+    const colorArray = color
+      .match(/[\d\\.]+/g)
+      ?.map((chanel) => chanel as unknown as number);
+    const ratio: number = colorArray
+      ? Math.round(
+          (colorArray[0] * 299 + colorArray[1] * 587 + colorArray[2] * 114) /
+            1000,
+        )
+      : 0;
+    return ratio > 125 ? "#262626" : "#F6F6F6";
+  };
+
   return (
     <>
       <CardContainer
         onPress={() => setEditModalVisibility(true)}
-        bgColor={bgColor}
+        bgColor="rgba(255, 255, 255, 0.5)"
       >
-        <ResourceContainer>
+        <ResourceContainer bgColor={bgColor}>
           <Icon name={iconName} color={iconColor} strokeWidth={2} size={50} />
-          <ResourceText>{balance.current}</ResourceText>
+          <ResourceText color={luminance(bgColor)}>
+            {balance.current}
+          </ResourceText>
         </ResourceContainer>
         <ResourceProdLabel>{t("resourceCard.production")}</ResourceProdLabel>
         <ResourceProdValue>{balance.production}</ResourceProdValue>

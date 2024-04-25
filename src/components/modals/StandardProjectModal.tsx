@@ -19,9 +19,9 @@ import {
   AlertDialogContent,
   AlertDialogBody,
   AlertDialogFooter,
-  Image,
 } from "@gluestack-ui/themed";
 import { StandardProjectType } from "@models/StandardProjectType";
+import { BodyRowContainer, ImageGuide } from "@styles/standardProject";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
@@ -82,13 +82,7 @@ const StandardProjectModal = () => {
             </ModalCloseButton>
           </ModalHeader>
           <ModalBody scrollEnabled={false}>
-            <Box
-              justifyContent="space-between"
-              alignItems="center"
-              my="$2"
-              px="$2"
-              flexDirection="row"
-            >
+            <BodyRowContainer>
               <Text>{t("modal.standardProject.actions.patents.title")}</Text>
               <Box flexDirection="row" w="$1/2">
                 <Input w="$1/3">
@@ -118,14 +112,8 @@ const StandardProjectModal = () => {
                   </ButtonText>
                 </Button>
               </Box>
-            </Box>
-            <Box
-              justifyContent="space-between"
-              alignItems="center"
-              my="$2"
-              px="$2"
-              flexDirection="row"
-            >
+            </BodyRowContainer>
+            <BodyRowContainer>
               <Text>{t("modal.standardProject.actions.powerPlant.title")}</Text>
               <Button
                 w="$1/2"
@@ -143,14 +131,8 @@ const StandardProjectModal = () => {
                   {t("modal.standardProject.actions.powerPlant.button")}
                 </ButtonText>
               </Button>
-            </Box>
-            <Box
-              justifyContent="space-between"
-              alignItems="center"
-              my="$2"
-              px="$2"
-              flexDirection="row"
-            >
+            </BodyRowContainer>
+            <BodyRowContainer>
               <Text>{t("modal.standardProject.actions.asteroid.title")}</Text>
               <Button
                 w="$1/2"
@@ -163,14 +145,8 @@ const StandardProjectModal = () => {
                   {t("modal.standardProject.actions.asteroid.button")}
                 </ButtonText>
               </Button>
-            </Box>
-            <Box
-              justifyContent="space-between"
-              alignItems="center"
-              my="$2"
-              px="$2"
-              flexDirection="row"
-            >
+            </BodyRowContainer>
+            <BodyRowContainer>
               <Text>{t("modal.standardProject.actions.aquifer.title")}</Text>
               <Button
                 w="$1/2"
@@ -183,14 +159,8 @@ const StandardProjectModal = () => {
                   {t("modal.standardProject.actions.aquifer.button")}
                 </ButtonText>
               </Button>
-            </Box>
-            <Box
-              justifyContent="space-between"
-              alignItems="center"
-              my="$2"
-              px="$2"
-              flexDirection="row"
-            >
+            </BodyRowContainer>
+            <BodyRowContainer>
               <Text>{t("modal.standardProject.actions.greenery.title")}</Text>
               <Button
                 w="$1/2"
@@ -203,14 +173,8 @@ const StandardProjectModal = () => {
                   {t("modal.standardProject.actions.greenery.button")}
                 </ButtonText>
               </Button>
-            </Box>
-            <Box
-              justifyContent="space-between"
-              alignItems="center"
-              my="$2"
-              px="$2"
-              flexDirection="row"
-            >
+            </BodyRowContainer>
+            <BodyRowContainer>
               <Text>{t("modal.standardProject.actions.city.title")}</Text>
               <Button
                 w="$1/2"
@@ -223,7 +187,7 @@ const StandardProjectModal = () => {
                   {t("modal.standardProject.actions.city.button")}
                 </ButtonText>
               </Button>
-            </Box>
+            </BodyRowContainer>
           </ModalBody>
         </ModalContent>
       </Modal>
@@ -241,10 +205,8 @@ const StandardProjectModal = () => {
                 `modal.standardProject.tilePlacement.${selectedAction?.toString()}`,
               )}
             </Text>
-            <Image
+            <ImageGuide
               size="xl"
-              m="$3"
-              alignSelf="center"
               source={imageSrc()}
               alt={`Placement of ${selectedAction?.toString()} tile`}
             />

@@ -4,6 +4,10 @@ import { Asset } from "expo-asset";
 import * as SplashScreen from "expo-splash-screen";
 import { Image } from "react-native";
 
+import activityIndicator from "./background/activityIndicator.png";
+import homeScreen from "./background/homeScreen.png";
+import loadingBackground from "./background/loadingBackground.png";
+import cardScreenBg from "./background/playerCard.jpg";
 import waterTilePlacement from "./tilePlacement/aquifer.gif";
 import temperatureRise from "./tilePlacement/asteroid.gif";
 import cityTilePlacement from "./tilePlacement/city.gif";
@@ -11,10 +15,14 @@ import greeneryTilePlacement from "./tilePlacement/greenery.gif";
 
 const assets: any = {
   images: {
-    cityTile: cityTilePlacement,
-    greeneryTile: greeneryTilePlacement,
-    waterTile: waterTilePlacement,
+    cityTilePlacement,
+    homeScreen,
+    loadingBackground,
+    activityIndicator,
+    greeneryTilePlacement,
+    waterTilePlacement,
     temperatureRise,
+    cardScreenBg,
   },
 };
 
