@@ -22,15 +22,6 @@ export const config = createConfig({
         },
       },
     },
-    ImageBackground: {
-      ...defaultConfig.components.ImageBackground,
-      bg: "#1e4",
-      resizeMode: "cover",
-      style: {
-        flex: 1,
-        justifyContent: "center",
-      },
-    },
   },
 });
 
