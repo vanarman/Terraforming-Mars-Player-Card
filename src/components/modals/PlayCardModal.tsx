@@ -1,13 +1,6 @@
 import ModalWrapper from "@components/ModalWrapper";
-import {
-  Box,
-  ModalBody,
-  Text,
-  Slider,
-  SliderTrack,
-  SliderThumb,
-  SliderFilledTrack,
-} from "@gluestack-ui/themed";
+import StyledSlider from "@components/StyledComponents/StyledSlider";
+import { Box, ModalBody, Text } from "@gluestack-ui/themed";
 import { ResourceType } from "@models/ResourceType";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -58,7 +51,7 @@ const PlayCardModal = () => {
                     localResources["CREDIT"].current,
                 })}
               </Text>
-              <Slider
+              <StyledSlider
                 defaultValue={
                   resources["CREDIT"].current - localResources["CREDIT"].current
                 }
@@ -79,12 +72,7 @@ const PlayCardModal = () => {
                     };
                   })
                 }
-              >
-                <SliderTrack>
-                  <SliderFilledTrack />
-                </SliderTrack>
-                <SliderThumb />
-              </Slider>
+              />
             </Box>
             <Text my="$3" size="lg" fontWeight="$bold">
               {t("modal.playCard.productionLabel")}
@@ -104,7 +92,7 @@ const PlayCardModal = () => {
                   <Text textAlign="center">
                     {localResources[key].production - resources[key].production}
                   </Text>
-                  <Slider
+                  <StyledSlider
                     defaultValue={
                       localResources[key].production - resources[key].production
                     }
@@ -124,12 +112,7 @@ const PlayCardModal = () => {
                         };
                       })
                     }
-                  >
-                    <SliderTrack>
-                      <SliderFilledTrack />
-                    </SliderTrack>
-                    <SliderThumb />
-                  </Slider>
+                  />
                 </Box>
               );
             })}

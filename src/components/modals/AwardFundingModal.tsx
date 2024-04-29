@@ -25,41 +25,26 @@ const AwardFundingModal = () => {
     >
       <Text size="lg">{t("modal.fundAward.text")}</Text>
       <ButtonGroup space="lg" justifyContent="center" m="$3">
-        <Button
-          variant="outline"
-          action="primary"
-          onPress={() => {
-            dispatch(
-              fundAward({
-                amount: 8,
-                resourceType: "CREDIT",
-              }),
-            );
-            dispatch(hide({ modalType: "awardFundingModalVisibility" }));
-          }}
-        >
-          <ButtonText>0</ButtonText>
-        </Button>
-        <Button
-          variant="outline"
-          action="primary"
-          onPress={() => {
-            dispatch(fundAward({ amount: 14, resourceType: "CREDIT" }));
-            dispatch(hide({ modalType: "awardFundingModalVisibility" }));
-          }}
-        >
-          <ButtonText>1</ButtonText>
-        </Button>
-        <Button
-          variant="outline"
-          action="primary"
-          onPress={() => {
-            dispatch(fundAward({ amount: 20, resourceType: "CREDIT" }));
-            dispatch(hide({ modalType: "awardFundingModalVisibility" }));
-          }}
-        >
-          <ButtonText>2</ButtonText>
-        </Button>
+        {[8, 14, 20].map((item, index) => {
+          return (
+            <Button
+              key={index}
+              variant="outline"
+              action="secondary"
+              onPress={() => {
+                dispatch(
+                  fundAward({
+                    amount: item,
+                    resourceType: "CREDIT",
+                  }),
+                );
+                dispatch(hide({ modalType: "awardFundingModalVisibility" }));
+              }}
+            >
+              <ButtonText>{index}</ButtonText>
+            </Button>
+          );
+        })}
       </ButtonGroup>
     </ModalWrapper>
   );

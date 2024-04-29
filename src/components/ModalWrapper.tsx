@@ -107,7 +107,6 @@ const ModalWrapper = ({
               <Button
                 isDisabled={confirmDisabled}
                 size="sm"
-                action="positive"
                 borderWidth="$0"
                 onPress={onConfirm}
               >

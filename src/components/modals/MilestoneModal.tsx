@@ -146,18 +146,6 @@ const MilestoneModal = () => {
           <AlertDialogFooter>
             <ButtonGroup space="lg">
               <Button
-                variant="outline"
-                action="secondary"
-                onPress={() => {
-                  dispatch(claimMilestone());
-                  setSelectedAction(null);
-                  dispatch(hide({ modalType: "milestoneModalVisibility" }));
-                }}
-              >
-                <ButtonText>{t("general.button.yes")}</ButtonText>
-              </Button>
-              <Button
-                bg="$error600"
                 action="negative"
                 onPress={() => {
                   setSelectedAction(null);
@@ -165,6 +153,15 @@ const MilestoneModal = () => {
                 }}
               >
                 <ButtonText>{t("general.button.no")}</ButtonText>
+              </Button>
+              <Button
+                onPress={() => {
+                  dispatch(claimMilestone());
+                  setSelectedAction(null);
+                  dispatch(hide({ modalType: "milestoneModalVisibility" }));
+                }}
+              >
+                <ButtonText>{t("general.button.yes")}</ButtonText>
               </Button>
             </ButtonGroup>
           </AlertDialogFooter>
