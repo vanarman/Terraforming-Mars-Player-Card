@@ -104,7 +104,6 @@ const PlayCardScreen = () => {
         </HStack>
         <HStack width="$full" h="$10" justifyContent="space-around" my="$5">
           <Button
-            bgColor="$backgroundDarkError"
             onPress={() => {
               navigation.navigate("HomeScreen");
             }}
@@ -112,7 +111,6 @@ const PlayCardScreen = () => {
             <Icon name="Earth" strokeWidth={1.5} />
           </Button>
           <Button
-            bgColor="$backgroundDarkError"
             onPress={() => {
               dispatch(show({ modalType: "researchModalStateVisibility" }));
             }}
@@ -120,7 +118,6 @@ const PlayCardScreen = () => {
             <ButtonText>{t("screen.playCard.researchButton")}</ButtonText>
           </Button>
           <Button
-            bgColor="$backgroundDarkError"
             onPress={() => {
               dispatch(show({ modalType: "actionModalVisibility" }));
             }}
@@ -128,7 +125,6 @@ const PlayCardScreen = () => {
             <ButtonText>{t("screen.playCard.actionButton")}</ButtonText>
           </Button>
           <Button
-            bgColor="$backgroundDarkError"
             onPress={() => {
               dispatch(production({ rank }));
             }}
