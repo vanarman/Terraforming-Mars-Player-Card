@@ -1,18 +1,6 @@
+import AlertWrapper from "@components/AlertWrapper";
 import ModalWrapper from "@components/ModalWrapper";
-import {
-  Box,
-  Heading,
-  Text,
-  Button,
-  ButtonText,
-  ButtonGroup,
-  AlertDialog,
-  AlertDialogBackdrop,
-  AlertDialogHeader,
-  AlertDialogContent,
-  AlertDialogBody,
-  AlertDialogFooter,
-} from "@gluestack-ui/themed";
+import { Box, Text, Button, ButtonText } from "@gluestack-ui/themed";
 import { Milestone } from "@models/MilestoneType";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -29,6 +17,16 @@ const MilestoneModal = () => {
   const rank = useSelector((state: RootState) => state.rank);
   const dispatch = useDispatch();
   const { t } = useTranslation();
+
+  const alertConfirm = () => {
+    dispatch(claimMilestone());
+    alertCancel();
+  };
+
+  const alertCancel = () => {
+    setSelectedAction(null);
+    dispatch(hide({ modalType: "milestoneModalVisibility" }));
+  };
 
   return (
     <>
@@ -128,45 +126,15 @@ const MilestoneModal = () => {
           </Button>
         </Box>
       </ModalWrapper>
-      <AlertDialog isOpen={selectedAction != null}>
-        <AlertDialogBackdrop />
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <Heading size="lg">
-              {t("modal.claimMilestone.requirementsCheck.title")}
-            </Heading>
-          </AlertDialogHeader>
-          <AlertDialogBody>
-            <Text size="lg">
-              {t(
-                `modal.claimMilestone.requirementsCheck.message.${selectedAction?.toString()}`,
-              )}
-            </Text>
-          </AlertDialogBody>
-          <AlertDialogFooter>
-            <ButtonGroup space="lg">
-              <Button
-                action="negative"
-                onPress={() => {
-                  setSelectedAction(null);
-                  dispatch(hide({ modalType: "milestoneModalVisibility" }));
-                }}
-              >
-                <ButtonText>{t("general.button.no")}</ButtonText>
-              </Button>
-              <Button
-                onPress={() => {
-                  dispatch(claimMilestone());
-                  setSelectedAction(null);
-                  dispatch(hide({ modalType: "milestoneModalVisibility" }));
-                }}
-              >
-                <ButtonText>{t("general.button.yes")}</ButtonText>
-              </Button>
-            </ButtonGroup>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+      <AlertWrapper
+        visibility={selectedAction != null}
+        heder={t("modal.claimMilestone.requirementsCheck.title")}
+        message={t(
+          `modal.claimMilestone.requirementsCheck.message.${selectedAction?.toString()}`,
+        )}
+        onConfirm={alertConfirm}
+        onCancel={alertCancel}
+      />
     </>
   );
 };

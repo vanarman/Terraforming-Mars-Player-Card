@@ -1,19 +1,12 @@
+import AlertWrapper from "@components/AlertWrapper";
 import ModalWrapper from "@components/ModalWrapper";
 import {
   Box,
-  Heading,
   Text,
   Button,
   ButtonText,
-  ButtonGroup,
   Input,
   InputField,
-  AlertDialog,
-  AlertDialogBackdrop,
-  AlertDialogHeader,
-  AlertDialogContent,
-  AlertDialogBody,
-  AlertDialogFooter,
 } from "@gluestack-ui/themed";
 import { StandardProjectType } from "@models/StandardProjectType";
 import { BodyRowContainer, ImageGuide } from "@styles/standardProject";
@@ -54,6 +47,16 @@ const StandardProjectModal = () => {
 
   const cancelAction = () => {
     dispatch(hide({ modalType: "standardProjectModalVisibility" }));
+  };
+
+  const alertCancel = () => {
+    setSelectedAction(null);
+    cancelAction();
+  };
+
+  const alertConfirm = () => {
+    dispatch(standardProject({ type: selectedAction }));
+    alertCancel();
   };
 
   return (
@@ -167,53 +170,21 @@ const StandardProjectModal = () => {
           </Button>
         </BodyRowContainer>
       </ModalWrapper>
-      <AlertDialog isOpen={selectedAction != null}>
-        <AlertDialogBackdrop />
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <Heading size="lg">
-              {t("modal.standardProject.tilePlacement.title")}
-            </Heading>
-          </AlertDialogHeader>
-          <AlertDialogBody>
-            <Text size="lg">
-              {t(
-                `modal.standardProject.tilePlacement.${selectedAction?.toString()}`,
-              )}
-            </Text>
-            <ImageGuide
-              size="xl"
-              source={imageSrc()}
-              alt={`Placement of ${selectedAction?.toString()} tile`}
-            />
-          </AlertDialogBody>
-          <AlertDialogFooter>
-            <ButtonGroup space="lg">
-              <Button
-                variant="outline"
-                action="secondary"
-                onPress={() => {
-                  dispatch(standardProject({ type: selectedAction }));
-                  setSelectedAction(null);
-                  cancelAction();
-                }}
-              >
-                <ButtonText>{t("general.button.yes")}</ButtonText>
-              </Button>
-              <Button
-                bg="$error600"
-                action="negative"
-                onPress={() => {
-                  setSelectedAction(null);
-                  cancelAction();
-                }}
-              >
-                <ButtonText>{t("general.button.no")}</ButtonText>
-              </Button>
-            </ButtonGroup>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+      <AlertWrapper
+        visibility={selectedAction != null}
+        heder={t("modal.standardProject.tilePlacement.title")}
+        message={t(
+          `modal.standardProject.tilePlacement.${selectedAction?.toString()}`,
+        )}
+        onConfirm={alertConfirm}
+        onCancel={alertCancel}
+      >
+        <ImageGuide
+          size="xl"
+          source={imageSrc()}
+          alt={`Placement of ${selectedAction?.toString()} tile`}
+        />
+      </AlertWrapper>
     </>
   );
 };
